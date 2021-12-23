@@ -35,10 +35,10 @@ public class BootstrapData implements CommandLineRunner { // Spring will look fo
         domainDrivenDesign.getAuthors().add(eric);
 
         // === CHALLENGE ===
-        Publisher sfg = new Publisher("SFG Publishing", null, "St Petersburg", "FL", null); // Guru was too lazy to fill the arguments in...
-        publisherRepository.save(sfg);
-        domainDrivenDesign.setPublisher(sfg);
-        sfg.getBooks().add(domainDrivenDesign);
+        Publisher publisher = new Publisher("SFG Publishing", null, "St Petersburg", "FL", null); // Guru was too lazy to fill the arguments in...
+        publisherRepository.save(publisher);
+        domainDrivenDesign.setPublisher(publisher);
+        publisher.getBooks().add(domainDrivenDesign);
 
         // Save the JPA Entities to a repo (to an in-memory H2 DB) (we're using the repo methods to do this - and underneath the covers Spring Data JPA is using hibernate to save these to an in-memory H2 DB)
         authorRepository.save(eric);
@@ -54,19 +54,19 @@ public class BootstrapData implements CommandLineRunner { // Spring will look fo
         noEJB.getAuthors().add(rod);
 
         // === CHALLENGE ===
-        noEJB.setPublisher(sfg);
-        sfg.getBooks().add(noEJB);
+        noEJB.setPublisher(publisher);
+        publisher.getBooks().add(noEJB);
 
-        // Save the JPA Entities to a repo (to an in-memory H2 DB) (we're using the repo methods to do this - and underneath the covers Spring Data JPA is using hibernate to save these to an in-memory H2 DB)
+        // Save the JPA Entities to a repo (to an in-m emory H2 DB) (we're using the repo methods to do this - and underneath the covers Spring Data JPA is using hibernate to save these to an in-memory H2 DB)
         authorRepository.save(rod);
         bookRepository.save(noEJB);
-        publisherRepository.save(sfg);
+        publisherRepository.save(publisher);
 
         // ----------------------
         System.out.println("Started in Bootstrap...");
         System.out.println("Number of Authors: " + authorRepository.count());
         System.out.println("Number of Books: " + bookRepository.count());
         System.out.println("Number of Publishers: " + publisherRepository.count());
-        System.out.println("Number of SFG Publisher's Books: " + sfg.getBooks().size());
+        System.out.println("Number of SFG Publisher's Books: " + publisher.getBooks().size());
     }
 }

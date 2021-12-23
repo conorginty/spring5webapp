@@ -78,7 +78,7 @@ public class Author {
         sb.append("id=").append(id);
         sb.append(", firstName='").append(firstName).append('\'');
         sb.append(", lastName='").append(lastName).append('\'');
-        sb.append(", books=").append(books);
+        // We removed books property from here to avoid a Circular reference infinite loop
         sb.append('}');
         return sb.toString();
     }

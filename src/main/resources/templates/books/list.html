@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"> <!--Thymeleaf namespace, which gives us Thymeleaf extension-->
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Framework Guru</title>
+</head>
+<body>
+    <h1>Book List</h1>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Publisher</th>
+        </tr>
+        <tr th:each="book : ${books}"> <!--Here we are asking the model to give us the property of books, and we want an iterator over books-->
+            <!--For each book, we want Thymeleaf to render the book element from the list of books we added to the model-->
+            <!--Thymeleaf will generate the elements dynamically during runtime-->
+            <!--We had a list returned back to the View layer with our controller method, and Thymeleaf iterated over
+            the list in order to generate and populate the elements-->
+            <td th:text="${book.id}"></td>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.publisher.name}"></td>
+        </tr>
+    </table>
+</body>
+</html>

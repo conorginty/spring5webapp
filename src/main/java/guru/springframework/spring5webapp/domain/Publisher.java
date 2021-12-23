@@ -112,7 +112,7 @@ public class Publisher {
         sb.append(", city='").append(city).append('\'');
         sb.append(", state='").append(state).append('\'');
         sb.append(", zipCode='").append(zipCode).append('\'');
-        sb.append(", books=").append(books);
+        // We removed books property from here to avoid a Circular reference infinite loop
         sb.append('}');
         return sb.toString();
     }

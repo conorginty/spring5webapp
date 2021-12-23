@@ -29,7 +29,7 @@ public class BookController {
         // and we'll be able to use this attribute inside our View layer to apply the view we're going to be returning
         // back to the client
 
-        // The view we want to apply.
-        return "books";
+        // The view page in our resources/templates directory we want to apply.
+        return "books/list"; // Look for the list template inside our templates directory
     }
 }
